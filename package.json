@@ -1,7 +1,7 @@
 {
-  "name": "express-rest-api-boilerplate",
+  "name": "illumate-backend",
   "version": "0.0.0",
-  "author": "Lukas Aichbauer <l.aichbauer@gmail.com>",
+  "author": "Muhammad Irsyad <irsyad.muhd@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
