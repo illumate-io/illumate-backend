@@ -6,11 +6,10 @@
 
 Run this against your local PSQL instance:
 
-```CREATE USER mxuser WITH PASSWORD 'mx$awesome!';
-CREATE DATABASE mxdb;
-CREATE DATABASE mxdbtest;
-ALTER DATABASE mxdb OWNER TO mxuser;
-ALTER DATABASE mxdbtest OWNER TO mxuser;
+```
+CREATE USER illumateuser WITH PASSWORD 'ill$umate!';
+CREATE DATABASE illumatedb;
+ALTER DATABASE illumatedb OWNER TO illumateuser;
 ```
 ---
 
