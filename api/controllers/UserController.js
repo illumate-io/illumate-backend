@@ -7,6 +7,17 @@ const UserController = () => {
     const { body } = req;
     if (body.password === body.password2) {
       try {
+        const checkEmail = await User.findOne({
+          where: {
+            email: body.email,
+          },
+        });
+
+        if (checkEmail) {
+          // Duplicate email
+          return res.status(400).json({ msg: 'Bad Request: User has already existed' });
+        }
+
         const user = await User.create({
           email: body.email,
           password: body.password,
