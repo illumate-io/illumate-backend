@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const authService = require('../services/auth.service');
 const bcryptService = require('../services/bcrypt.service');
+const nanoid = require('nanoid');
 
 const UserController = () => {
   const register = async (req, res) => {
@@ -19,8 +20,12 @@ const UserController = () => {
         }
 
         const user = await User.create({
+          user_id: nanoid(),
+          username: body.username,
           email: body.email,
           password: body.password,
+          school: body.school,
+          type: body.type,
         });
         const token = authService().issue({ id: user.id });
 
@@ -88,12 +93,28 @@ const UserController = () => {
     }
   };
 
+  const getUserById = async (req, res) => {
+    // eslint-disable-next-line
+    const { id } = req.params;
+    try {
+      const user = await User.findOne({
+        where: {
+          user_id: id,
+        },
+      });
+      return res.status(200).json({ user });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
 
   return {
     register,
     login,
     validate,
     getAll,
+    getUserById,
   };
 };
 
