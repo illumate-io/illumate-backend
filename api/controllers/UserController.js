@@ -94,7 +94,6 @@ const UserController = () => {
   };
 
   const getUserById = async (req, res) => {
-    // eslint-disable-next-line
     const { id } = req.params;
     try {
       const user = await User.findOne({
@@ -109,12 +108,27 @@ const UserController = () => {
     }
   };
 
+  const getAllTutorUser = async (req, res) => {
+    try {
+      const tutors = await User.findAll({
+        where: {
+          type: 'tutor',
+        },
+      });
+      return res.status(200).json({ tutors });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  }
+
   return {
     register,
     login,
     validate,
     getAll,
     getUserById,
+    getAllTutorUser,
   };
 };
 

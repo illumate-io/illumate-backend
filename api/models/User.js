@@ -30,13 +30,27 @@ const User = sequelize.define('User', {
   },
   type: {
     type: Sequelize.STRING,
-    unique: true,
+    unique: false,
   },
   school: {
     type: Sequelize.STRING,
-    unique: true,
+    unique: false,
   },
-}, { hooks, tableName });
+  created_at: {
+    type: Sequelize.DATE,
+    allowNull: false,
+  },
+  updated_at: {
+    type: Sequelize.DATE,
+    allowNull: true,
+  },
+}, {
+  hooks,
+  tableName,
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
+  underscored: true,
+});
 
 // eslint-disable-next-line
 User.prototype.toJSON = function () {
