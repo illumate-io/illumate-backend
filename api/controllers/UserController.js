@@ -1,15 +1,31 @@
 const User = require('../models/User');
 const authService = require('../services/auth.service');
 const bcryptService = require('../services/bcrypt.service');
+const nanoid = require('nanoid');
 
 const UserController = () => {
   const register = async (req, res) => {
     const { body } = req;
     if (body.password === body.password2) {
       try {
+        const checkEmail = await User.findOne({
+          where: {
+            email: body.email,
+          },
+        });
+
+        if (checkEmail) {
+          // Duplicate email
+          return res.status(400).json({ msg: 'Bad Request: User has already existed' });
+        }
+
         const user = await User.create({
+          user_id: nanoid(),
+          username: body.username,
           email: body.email,
           password: body.password,
+          school: body.school,
+          type: body.type,
         });
         const token = authService().issue({ id: user.id });
 
@@ -77,12 +93,42 @@ const UserController = () => {
     }
   };
 
+  const getUserById = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const user = await User.findOne({
+        where: {
+          user_id: id,
+        },
+      });
+      return res.status(200).json({ user });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  };
+
+  const getAllTutorUser = async (req, res) => {
+    try {
+      const tutors = await User.findAll({
+        where: {
+          type: 'tutor',
+        },
+      });
+      return res.status(200).json({ tutors });
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
+  }
 
   return {
     register,
     login,
     validate,
     getAll,
+    getUserById,
+    getAllTutorUser,
   };
 };
 
