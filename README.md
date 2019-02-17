@@ -13,6 +13,15 @@ ALTER DATABASE illumatedb OWNER TO illumateuser;
 ```
 ---
 
+*If there is a connection problem with psql, run this command to reinstall it* 
+
+```
+brew services start postgresql
+createdb
+```
+
+
+---
 > Express REST API with JWT Authentication and support for sqlite, mysql, and postgresql
 
 - authentication via [JWT](https://jwt.io/)
