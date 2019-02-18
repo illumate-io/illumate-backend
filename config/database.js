@@ -9,7 +9,7 @@ switch (process.env.NODE_ENV) {
   case 'production':
     console.log(connection.production);
     database = new Sequelize(
-      connection.production.database,
+      connection.production.host,
       null,
       null,
       { dialect: 'postgres' },
