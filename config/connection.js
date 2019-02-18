@@ -15,8 +15,8 @@ const testing = {
 };
 
 const production = {
-  database: process.env.DB_NAME,
-  username: process.env.DB_USER,
+  database: process.env.DB_NAME || 'd8a3m24u3qqk8v',
+  username: process.env.DB_USER || 'hxndqobettwyyk',
   password: process.env.DB_PASS,
   host: process.env.DATABASE_URL || 'localhost',
   dialect: 'postgres',

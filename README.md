@@ -191,7 +191,7 @@ const ModelController = () => {
 
       const updatedModel = await model.update({
         key: value,
-      )};
+      });
 
       return res.status(200).json({ updatedModel });
     } catch (err) {
