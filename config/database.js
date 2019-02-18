@@ -9,10 +9,14 @@ switch (process.env.NODE_ENV) {
   case 'production':
     console.log(connection.production);
     database = new Sequelize(
-      connection.production.host,
+      process.env.DATABASE_URL,
       null,
       null,
-      { dialect: 'postgres' },
+      {
+        dialect: 'postgres',
+        protocol: 'postgres',
+        logging: true, // false
+      },
     );
     //   // connection.production.database,
     //   // connection.production.username,
