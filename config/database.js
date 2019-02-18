@@ -8,7 +8,12 @@ let database;
 switch (process.env.NODE_ENV) {
   case 'production':
     console.log(connection.production);
-    database = new Sequelize(connection.production.database, { dialect: 'postgres' });
+    database = new Sequelize(
+      connection.production.database,
+      null,
+      null,
+      { dialect: 'postgres' },
+    );
     //   // connection.production.database,
     //   // connection.production.username,
     //   // connection.production.password, {
