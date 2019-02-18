@@ -7,19 +7,20 @@ let database;
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    database = new Sequelize(
-      connection.production.database,
-      connection.production.username,
-      connection.production.password, {
-        host: connection.production.host,
-        dialect: connection.production.dialect,
-        pool: {
-          max: 5,
-          min: 0,
-          idle: 10000,
-        },
-      },
-    );
+    console.log(connection.production);
+    database = new Sequelize(connection.production.database);
+    //   // connection.production.database,
+    //   // connection.production.username,
+    //   // connection.production.password, {
+    //   //   host: connection.production.host,
+    //   //   dialect: connection.production.dialect,
+    //   //   pool: {
+    //   //     max: 5,
+    //   //     min: 0,
+    //   //     idle: 10000,
+    //   //   },
+    //   // },
+    // );
     break;
   case 'testing':
     database = new Sequelize(
@@ -37,6 +38,7 @@ switch (process.env.NODE_ENV) {
     );
     break;
   default:
+    console.log(connection.development)
     database = new Sequelize(
       connection.development.database,
       connection.development.username,
