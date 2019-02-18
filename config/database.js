@@ -15,6 +15,9 @@ switch (process.env.NODE_ENV) {
       {
         dialect: 'postgres',
         protocol: 'postgres',
+        dialectOptions: {
+          ssl: true,
+        },
         logging: true, // false
       },
     );
