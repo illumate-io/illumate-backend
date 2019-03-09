@@ -15,9 +15,9 @@ const testing = {
 };
 
 const production = {
-  database: process.env.DB_NAME || 'd8a3m24u3qqk8v',
-  username: process.env.DB_USER || 'hxndqobettwyyk',
-  password: process.env.DB_PASS || '8708afba8019a0d85cbef3aa9508b66e4d14b76f888b8f5ca7cc4f45108f756e',
+  database: process.env.DB_NAME || 'dfbpodq70o6snb',
+  username: process.env.DB_USER || 'thexvmbeikljbh',
+  password: process.env.DB_PASS || '15e82b041b5a2440222f336efa5ed685f98bcb28cf09aae2b1c01cba70090537',
   host: process.env.DATABASE_URL || 'localhost',
   dialect: 'postgres',
 };

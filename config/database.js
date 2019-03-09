@@ -3,35 +3,35 @@ const path = require('path');
 
 const connection = require('./connection');
 
-let database;
+var database;  // eslint-disable-line
 
 switch (process.env.NODE_ENV) {
   case 'production':
+    // database = new Sequelize(
+    //   'postgres://thexvmbeikljbh:15e82b041b5a2440222f336efa5ed685f98bcb28cf09aae2b1c01cba70090537@ec2-54-197-232-203.compute-1.amazonaws.com:5432/dfbpodq70o6snb',
+    //   null,
+    //   {
+    //     dialect: 'postgres',
+    //     protocol: 'postgres',
+    //     dialectOptions: {
+    //       ssl: true,
+    //     },
+    //     logging: true, // false
+    //   },
+    // );
     database = new Sequelize(
-      'postgres://hxndqobettwyyk:8708afba8019a0d85cbef3aa9508b66e4d14b76f888b8f5ca7cc4f45108f756e@ec2-107-20-185-27.compute-1.amazonaws.com:5432/d8a3m24u3qqk8v',
-      null,
-      null,
-      {
-        dialect: 'postgres',
-        protocol: 'postgres',
-        dialectOptions: {
-          ssl: true,
+      connection.production.database,
+      connection.production.username,
+      connection.production.password, {
+        host: connection.production.host,
+        dialect: connection.production.dialect,
+        pool: {
+          max: 5,
+          min: 0,
+          idle: 10000,
         },
-        logging: true, // false
       },
     );
-    //   // connection.production.database,
-    //   // connection.production.username,
-    //   // connection.production.password, {
-    //   //   host: connection.production.host,
-    //   //   dialect: connection.production.dialect,
-    //   //   pool: {
-    //   //     max: 5,
-    //   //     min: 0,
-    //   //     idle: 10000,
-    //   //   },
-    //   // },
-    // );
     break;
   case 'testing':
     database = new Sequelize(
@@ -65,16 +65,16 @@ switch (process.env.NODE_ENV) {
     //   },
     // );
     database = new Sequelize(
-      'postgres://hxndqobettwyyk:8708afba8019a0d85cbef3aa9508b66e4d14b76f888b8f5ca7cc4f45108f756e@ec2-107-20-185-27.compute-1.amazonaws.com:5432/d8a3m24u3qqk8v',
-      null,
-      null,
-      {
-        dialect: 'postgres',
-        protocol: 'postgres',
-        dialectOptions: {
-          ssl: true,
+      connection.production.database,
+      connection.production.username,
+      connection.production.password, {
+        host: connection.production.host,
+        dialect: connection.production.dialect,
+        pool: {
+          max: 5,
+          min: 0,
+          idle: 10000,
         },
-        logging: true, // false
       },
     );
 }
