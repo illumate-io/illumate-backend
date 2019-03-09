@@ -7,7 +7,6 @@ let database;
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    console.log(process.env);
     database = new Sequelize(
       process.env.DATABASE_URL,
       null,
@@ -50,7 +49,6 @@ switch (process.env.NODE_ENV) {
     );
     break;
   default:
-    console.log(connection.development)
     database = new Sequelize(
       connection.development.database,
       connection.development.username,
