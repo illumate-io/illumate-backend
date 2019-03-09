@@ -19,6 +19,13 @@ switch (process.env.NODE_ENV) {
     //     logging: true, // false
     //   },
     // );
+    console.log({
+      database: connection.production.database,
+      username: connection.production.username,
+      password: connection.production.password,
+      host: connection.production.host,
+      dialect: connection.production.dialect,
+    });
     database = new Sequelize(
       connection.production.database,
       connection.production.username,
