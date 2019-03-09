@@ -8,7 +8,7 @@ let database;
 switch (process.env.NODE_ENV) {
   case 'production':
     database = new Sequelize(
-      process.env.DATABASE_URL,
+      'postgres://hxndqobettwyyk:8708afba8019a0d85cbef3aa9508b66e4d14b76f888b8f5ca7cc4f45108f756e@ec2-107-20-185-27.compute-1.amazonaws.com:5432/d8a3m24u3qqk8v',
       null,
       null,
       {
