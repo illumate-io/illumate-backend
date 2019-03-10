@@ -7,7 +7,7 @@ var database;  // eslint-disable-line
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    database = new Sequelize('postgres://thexvmbeikljbh:15e82b041b5a2440222f336efa5ed685f98bcb28cf09aae2b1c01cba70090537@ec2-54-197-232-203.compute-1.amazonaws.com:5432/dfbpodq70o6snb')
+    database = new Sequelize(connection.production.host);
     //   null,
     //   {
     //     dialect: 'postgres',
