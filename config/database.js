@@ -7,8 +7,7 @@ var database;  // eslint-disable-line
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    // database = new Sequelize(
-    //   'postgres://thexvmbeikljbh:15e82b041b5a2440222f336efa5ed685f98bcb28cf09aae2b1c01cba70090537@ec2-54-197-232-203.compute-1.amazonaws.com:5432/dfbpodq70o6snb',
+    database = new Sequelize('postgres://thexvmbeikljbh:15e82b041b5a2440222f336efa5ed685f98bcb28cf09aae2b1c01cba70090537@ec2-54-197-232-203.compute-1.amazonaws.com:5432/dfbpodq70o6snb')
     //   null,
     //   {
     //     dialect: 'postgres',
@@ -18,7 +17,7 @@ switch (process.env.NODE_ENV) {
     //     },
     //     logging: true, // false
     //   },
-    // );
+    // // );
     console.log({
       database: connection.production.database,
       username: connection.production.username,
@@ -26,19 +25,19 @@ switch (process.env.NODE_ENV) {
       host: connection.production.host,
       dialect: connection.production.dialect,
     });
-    database = new Sequelize(
-      connection.production.database,
-      connection.production.username,
-      connection.production.password, {
-        host: connection.production.host,
-        dialect: connection.production.dialect,
-        pool: {
-          max: 5,
-          min: 0,
-          idle: 10000,
-        },
-      },
-    );
+    // database = new Sequelize(
+    //   connection.production.database,
+    //   connection.production.username,
+    //   connection.production.password, {
+    //     host: connection.production.host,
+    //     dialect: connection.production.dialect,
+    //     pool: {
+    //       max: 5,
+    //       min: 0,
+    //       idle: 10000,
+    //     },
+    //   },
+    // );
     break;
   case 'testing':
     database = new Sequelize(
